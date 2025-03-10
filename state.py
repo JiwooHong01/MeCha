@@ -1,34 +1,33 @@
+# Agent State
+# We will define a graph.
+
+# A state object that it passes around to each node.
+
+# Our state will be a list of messages.
+
+# Each node in our graph will append to it.
 from typing import Annotated, Sequence
 from typing_extensions import TypedDict
-
 from langchain_core.messages import BaseMessage
-
 from langgraph.graph.message import add_messages
-
-from langgraph.graph import END, StateGraph, START
-from langgraph.prebuilt import ToolNode
-
 from typing import Annotated, Literal, Sequence
 from typing_extensions import TypedDict
+from langchain_core.messages import BaseMessage, HumanMessage
+
 
 from langchain import hub
-from langchain_core.messages import BaseMessage, HumanMessage
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 
 from pydantic import BaseModel, Field
-
-
 from langgraph.prebuilt import tools_condition
+from docs import tools
 
 class AgentState(TypedDict):
-        # The add_messages function defines how an update should be processed
-        # Default is to replace. add_messages says "append"
-        messages: Annotated[Sequence[BaseMessage], add_messages]
-    
-### Edges
-
+    # The add_messages function defines how an update should be processed
+    # Default is to replace. add_messages says "append"
+    messages: Annotated[Sequence[BaseMessage], add_messages]
 
 def grade_documents(state) -> Literal["generate", "rewrite"]:
     """
@@ -86,12 +85,9 @@ def grade_documents(state) -> Literal["generate", "rewrite"]:
         print("---DECISION: DOCS NOT RELEVANT---")
         print(score)
         return "rewrite"
-
-
-### Nodes
-
-
+    
 def agent(state):
+    
     """
     Invokes the agent model to generate a response based on the current state. Given
     the question, it will decide to retrieve using the retriever tool, or simply end.
@@ -109,7 +105,6 @@ def agent(state):
     response = model.invoke(messages)
     # We return a list, because this will get added to the existing list
     return {"messages": [response]}
-
 
 def rewrite(state):
     """
