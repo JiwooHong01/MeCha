@@ -21,12 +21,12 @@ def docs_retriever():
     #     chunk_size=100, chunk_overlap=50
     # )
     # doc_splits = text_splitter.split_documents(docs_list)
-    # names = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-    names = ["A", "B"]
+    names = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+    # names = ["A", "B"]
     docs = [CSVLoader(file_path="data/raw/crawled_results" + name + ".csv").load() for name in names]
     docs_list = [item for sublist in docs for item in sublist]
-    print("docs_list")
-    print(docs_list)
+    # print("docs_list")
+    # print(docs_list)
     text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
         chunk_size=100, chunk_overlap=50
     )

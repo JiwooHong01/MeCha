@@ -24,15 +24,18 @@ from graph import Graph
 from docs import *
 from state import *
 import pprint
+
 from display import display
 import pprint
 from app import user
 from langchain_core.messages import BaseMessage, HumanMessage
+from dotenv import load_dotenv
+
 
 
 
 def main():
-    
+    load_dotenv()
     graph = Graph()
     display(graph)
     print("*" * 20 + "Prompt[rlm/rag-prompt]" + "*" * 20)
