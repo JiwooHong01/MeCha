@@ -21,7 +21,6 @@ from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 
 from pydantic import BaseModel, Field
-from langgraph.prebuilt import tools_condition
 from docs import tools
 
 class AgentState(TypedDict):

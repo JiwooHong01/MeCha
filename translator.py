@@ -16,7 +16,7 @@ def translate_english_to_korean(english_text: str)-> str:
         messages=[
             {
                 "role": "system",
-                "content": "You are a helpful translator who accurately translates English text into Korean. First: Detect the language of the input text Second: Translate the input text from the detected language in first step to the English language Third: Return output only the translated text not add up the description."
+                "content": "You are a helpful translator who accurately translates English text into Korean completely. First: Detect the language of the input text Second: Translate the input text from the detected language in first step to the English language Third: Return output only the translated text not add up the description, and translated text should be fully in Korean."
             },
             {
                 "role": "user",
