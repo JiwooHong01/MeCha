@@ -133,7 +133,7 @@ def rewrite(state):
     ]
 
     # Grader
-    model = ChatOpenAI(temperature=0, model="gpt-4-0125-preview", streaming=True)
+    model = ChatOpenAI(temperature=0, model="gpt-4o", streaming=True)
     response = model.invoke(msg)
     return {"messages": [response]}
 
@@ -159,7 +159,7 @@ def generate(state):
     prompt = hub.pull("rlm/rag-prompt")
 
     # LLM
-    llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0, streaming=True)
+    llm = ChatOpenAI(model_name="gpt-4o", temperature=0, streaming=True)
 
     # Post-processing
     def format_docs(docs):
