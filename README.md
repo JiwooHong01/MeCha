@@ -6,7 +6,7 @@ Medical Chatbot
 python main.py
 
 ### Database Preparation
-1. crawled_resultA~Z : python cdc_scraper.py (output saved in data/raw/crawled_resultA~Z.csv)
+1. crawling code : python cdc_scraper.py (output saved in data/raw/crawled_resultA~Z.csv)
 2. remove unnecessary sentences : removedup_sent.py -> output saved in data/dataset_raw/A~Z.csv
 3. remove unnecessary sentences : removedup_sent2.py -> output saved in data/dataset2/A~Z.csv
 4. remove unnecessary words : removedup_word.py -> output saved in data/dataset/A~Z.csv
